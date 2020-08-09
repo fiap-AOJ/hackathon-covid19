@@ -1,6 +1,6 @@
 # FIAP Hackathon - Controle de distribuição de vacina COVID-19
 
-Este projeto tem como objeito contrinuir para a distribuição e controle de aplicação da Vacina (quando existir) contra a COVID-19.
+Este projeto tem como objetivo contribuir para a distribuição e controle de aplicação da vacina (quando existir) contra a COVID-19.
 
 ## Grande Observação
 
