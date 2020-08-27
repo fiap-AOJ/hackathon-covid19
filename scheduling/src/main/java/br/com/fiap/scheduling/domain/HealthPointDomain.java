@@ -1,30 +1,48 @@
 package br.com.fiap.scheduling.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.UUID;
+
+@Document
 public class HealthPointDomain {
 
-	private final String name;
+	@MongoId
+	private String id;
 
-	private final AddressDomain address;
+	private String name;
 
-	private final Set<ScheduleDomain> schedules;
+	private AddressDomain address;
 
 	private HealthPointDomain(final Builder builder){
+		this.id = builder.id;
 		this.name = builder.name;
 		this.address = builder.address;
-		this.schedules = builder.schedules;
 	}
 
-	public static final Builder build(){
+	public String getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public AddressDomain getAddress() {
+		return address;
+	}
+
+	public HealthPointDomain(){}
+
+	public static final Name builder(){
 		return new Builder();
 	}
 
 	public static final class Builder implements Name, Address, Build{
+		private final String id = UUID.randomUUID().toString();
 		private String name;
 		private AddressDomain address;
-		private Set<ScheduleDomain> schedules = new HashSet<>();
 
 		@Override
 		public Address name(final String name) {
@@ -39,14 +57,8 @@ public class HealthPointDomain {
 		}
 
 		@Override
-		public Builder schedules(final Set<ScheduleDomain> schedulies) {
-			this.schedules = schedulies;
-			return this;
-		}
-
-		@Override
 		public HealthPointDomain build() {
-			return null;
+			return new HealthPointDomain(this);
 		}
 	}
 
@@ -59,7 +71,6 @@ public class HealthPointDomain {
 	}
 
 	public interface Build{
-		public Builder schedules(final Set<ScheduleDomain> schedules);
 		public HealthPointDomain build();
 	}
 }

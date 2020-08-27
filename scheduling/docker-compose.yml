@@ -1,0 +1,14 @@
+version: '3'
+services:
+    api-database:
+        image: mongo
+        ports:
+            - "27017:27017"
+        volumes:
+            - /Users/rbcabrals/Downloads/docker-data:/data/db
+    api:
+        image: "rbcabrals/fiap-hackaton-scheduling:0.5.1"
+        ports:
+            - "8080:8080"
+        links:
+            - api-database
