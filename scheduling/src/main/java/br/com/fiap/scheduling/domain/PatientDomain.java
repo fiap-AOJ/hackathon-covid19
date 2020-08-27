@@ -2,9 +2,9 @@ package br.com.fiap.scheduling.domain;
 
 public final class PatientDomain extends PersonDomain{
 
-	private final Boolean hasRisk;
+	private Boolean hasRisk;
 
-	private final Boolean isHealthProfessional;
+	private Boolean isHealthProfessional;
 
 	private PatientDomain(final Builder builder){
 		super(builder.person);
@@ -20,7 +20,10 @@ public final class PatientDomain extends PersonDomain{
 		return isHealthProfessional;
 	}
 
-	public static final Builder builder(){
+
+	public PatientDomain(){}
+
+	public static final PersonDomainBuilder builder(){
 		return new Builder();
 	}
 
@@ -46,6 +49,7 @@ public final class PatientDomain extends PersonDomain{
 			this.isHealthProfessional = isHealthProfessional;
 			return this;
 		}
+
 
 		@Override
 		public PatientDomain build() {

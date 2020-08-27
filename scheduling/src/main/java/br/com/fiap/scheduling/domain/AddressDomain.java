@@ -1,20 +1,23 @@
 package br.com.fiap.scheduling.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Optional;
 
+@Document
 public class AddressDomain {
 
-	private final br.com.fiap.scheduling.domain.Coordinate coordinate;
+	private br.com.fiap.scheduling.domain.Coordinate coordinate;
 
-	private final String street;
+	private String street;
 
-	private final String number;
+	private String number;
 
-	private final String city;
+	private String city;
 
-	private final String neighborhood;
+	private String neighborhood;
 
-	private final String state;
+	private String state;
 
 	private AddressDomain(final Builder builder){
 		this.coordinate = builder.coordinate;
@@ -24,6 +27,8 @@ public class AddressDomain {
 		this.neighborhood = builder.neighborhood;
 		this.state = builder.state;
 	}
+
+	public AddressDomain(){}
 
 	public static final AddressDomain of(final br.com.fiap.scheduling.domain.Coordinate coordinate){
 		return builder() //

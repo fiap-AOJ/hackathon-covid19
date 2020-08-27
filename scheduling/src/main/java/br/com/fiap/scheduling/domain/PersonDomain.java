@@ -1,17 +1,20 @@
 package br.com.fiap.scheduling.domain;
 
+import org.springframework.data.mongodb.core.mapping.MongoId;
+
 import java.time.LocalDate;
 import java.util.Optional;
 
 public abstract class PersonDomain {
 
-	private final String name;
+	private String name;
 
-	private final String document;
+	@MongoId
+	private String document;
 
-	private final LocalDate birthday;
+	private LocalDate birthday;
 
-	private final Gender gender;
+	private Gender gender;
 
 	protected PersonDomain(final Builder builder){
 		this.name = builder.name;
@@ -34,6 +37,12 @@ public abstract class PersonDomain {
 
 	public Optional<Gender> getGender() {
 		return Optional.ofNullable(gender);
+	}
+
+	public PersonDomain(){}
+
+	public static final Name builderPerson(){
+		return new Builder();
 	}
 
 	public static class Builder implements Name, Document, Build{

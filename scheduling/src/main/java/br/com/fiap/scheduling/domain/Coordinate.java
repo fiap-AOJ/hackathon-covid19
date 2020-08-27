@@ -2,14 +2,16 @@ package br.com.fiap.scheduling.domain;
 
 public class Coordinate {
 
-	private final Double latitude;
+	private Double latitude;
 
-	private final Double longitude;
+	private Double longitude;
 
 	private Coordinate(final Double latitude, final Double longitude){
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+
+	public Coordinate(){}
 
 	public static final Coordinate of(final Double latitude, final Double longitude){
 		return new Coordinate(latitude, longitude);
